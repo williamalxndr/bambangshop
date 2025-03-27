@@ -5,10 +5,8 @@ use rocket::http::Status;
 use rocket::serde::json::Json;
 use crate::model::notification::Notification;
 use crate::model::product::Product;
-use crate::model::subscriber::{self, Subscriber};
+use crate::model::subscriber::Subscriber;
 use crate::repository::subscriber::SubscriberRepository;
-
-use super::product;
 
 pub struct NotificationService;
 

@@ -69,7 +69,7 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement notify function in Notification service to notify each Subscriber.`
     -   [x] Commit: `Implement publish function in Program service and Program controller.`
     -   [x] Commit: `Edit Product service methods to call notify after create/delete.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
+    -   [x] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -91,3 +91,8 @@ This is the place for you to write reflections:
 3. Postman sangat membantu dalam testing API, baik yang kita buat dalam aplikasi kita ataupun API eksternal. Kita dapat mengirim HTTP request menggunakan API endpoint dan dapat mengetahui HTTP response dari API tersebut baik dalam berbagai format seperti JSON, XML, HTML, dll. Hal ini sangat berguna untuk pengujian API eksternal yang mungkin kita tidak tahu bagaimana cara akses data dari API tersebut atau API tersebut memiliki dokumentasi yang terbatas ataupun untuk pengujian apakah API aplikasi yang kita buat berjalan dengan baik.
 
 #### Reflection Publisher-3
+1. Kita menggunakan push model. Hal ini dikarenakan publisher akan mem-push data ke subscriber setiap kali ada data product yang diubah baik itu create, delete, atau publish.
+
+2. Jika menggunakan pull, publisher tidak perlu melakukan notify kepada semua subscriber setiap kali dilakukan create, delete, atau publish. Namun, data hanya akan dipull setiap kali subscriber membutuhkannya. Hal ini akan lebih mengurangi beban pada publisher karena notification hanya akan dipanggil subscriber ketika butuh saja, namun bisa menjadi kelemahan jika banyak subscriber melakukan pull pada waktu yang sama sehingga memicu beban tambahan pada server.
+
+3. Jika tidak menerapkan multi-threading, maka dapat berpotensi pada lambatnya proses notifikasi pada subscribers. Jika terdapat satu notifikasi yang lambat pada satu subscriber (misal karena jaringan lambat), maka notifikasi ke subscriber lain akan menunggu sampai notifikasi subscriber tersebut sukses. 
