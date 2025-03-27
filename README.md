@@ -62,8 +62,8 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement subscribe function in Notification service.`
     -   [x] Commit: `Implement subscribe function in Notification controller.`
     -   [x] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
+    -   [x] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [x] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
     -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
     -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
@@ -84,5 +84,10 @@ This is the place for you to write reflections:
 3. Menurut saya, implementasi sekarang yang menggunakan DashMap ditambah dengan `lazy_static` untuk lazy initialization saja sudah menerapkan prinsip singleton pattern. Jadi, kita tidak perlu mengubah penggunaan dashmap dan mengimplementasikan ulang lagi.
 
 #### Reflection Publisher-2
+1. Service dan repository berperan dalam komunikasi antara model dengan controller untuk MVC pattern. Repository berperan dalam penyimpanan data yang sudah dikonfigurasi di model. Sedangkan service menangani logika bisnis di aplikasi kita. Service berinteraksi dengan repository untuk mendapatkan data yang dibutuhkan, yang kemudian akan diproses dan diolah sebelum diberikan hasilnya ke controller.
+
+2. Jika peran repository dan service dibuat di model, implementasi ini tetap valid untuk MVC pattern. Namun, kode kita akan lebih kompleks dan jauh lebih sulit untuk dimaintain. Hal ini dikarenakan penyatuan banyak tanggung jawab (konfigurasi, penyimpanan data, logika bisnis) dalam satu tempat yaitu model. Dengan penggabungan tanggung jawab ini dalam model, komunikasi antara `Product`, `Subscriber`, dan `Notification` akan jauh lebih rumit dan sulit. Perubahan pada salah satu komponen bisa mempengaruhi bagian lain yang akan menyulitkan proses debugging kita.
+
+3. Postman sangat membantu dalam testing API, baik yang kita buat dalam aplikasi kita ataupun API eksternal. Kita dapat mengirim HTTP request menggunakan API endpoint dan dapat mengetahui HTTP response dari API tersebut baik dalam berbagai format seperti JSON, XML, HTML, dll. Hal ini sangat berguna untuk pengujian API eksternal yang mungkin kita tidak tahu bagaimana cara akses data dari API tersebut atau API tersebut memiliki dokumentasi yang terbatas ataupun untuk pengujian apakah API aplikasi yang kita buat berjalan dengan baik.
 
 #### Reflection Publisher-3
