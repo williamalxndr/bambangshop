@@ -77,6 +77,11 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
+1. Tidak perlu menggunakan interface dalam kasus ini. Dalam contoh di buku Head First Design Pattern, subscriber dapat dibagi menjadi banyak subclass, dalam kasus inilah dibutuhkan interface. Namun, jika dalam aplikasi BambangShop kita ingin menggunakan lebih dari satu macam subscriber yang akan dijadikan subclass dari subscriber, maka kita akan membutuhkan interface untuk subscriber.
+
+2. Menggunakan dashmap akan lebih baik. Pencarian yang digunakan untuk method add, get_by_id, delete, dll akan menjadi lebih cepat yang mencari dengan id (O(1)), sedangkan jika menggunakan Vec, kita memerlukan iterasi setiap isi dari repository tersebut untuk pencarian(O(n)). Selain itu, dengan menggunakan DashMap, kita dapat mengantisipasi jika terdapat Product atau Subscriber yang tidak unik, jika menggunakan Vec, jika hanya menambahkan Product/Subscriber tidak akan terdeteksi jika Product/Subscriber dengan id/url yang sama sudah ada di repository (kecuali kita menggunakan pencarian yang akan memakan waktu O(n)).
+
+3. Menurut saya, implementasi sekarang yang menggunakan DashMap ditambah dengan `lazy_static` untuk lazy initialization saja sudah menerapkan prinsip singleton pattern. Jadi, kita tidak perlu mengubah penggunaan dashmap dan mengimplementasikan ulang lagi.
 
 #### Reflection Publisher-2
 
